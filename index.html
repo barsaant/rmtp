@@ -9,7 +9,7 @@
   <body>
     <video id="videoPlayer" controls width="640" height="360" autoplay></video>
     <script>
-      var url = "http://127.0.0.1:8080/dash/stream.mpd";
+      var url = "http://192.168.5.64:8080/dash/1234.mpd";
       var player = dashjs.MediaPlayer().create();
       player.initialize(document.querySelector("#videoPlayer"), url, true);
     </script>
