@@ -13,6 +13,7 @@ services:
       - ./nginx/config/nginx.conf:/etc/nginx/nginx.conf
       - ./volumes/dash:/mnt/dash # Directory for DASH storage
       - ./volumes/hls:/mnt/hls # Directory for HLS storage
+      - ./volumes/recordings:/var/www/html/recordings
     ports:
       - "1935:1935" # RTMP port
       - "8080:8080" # HTTP port for DASH and HLS
