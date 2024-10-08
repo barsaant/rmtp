@@ -1,17 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DASH Stream</title>
-    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
+    <title>Stream Player</title>
+    <link
+      href="https://vjs.zencdn.net/7.18.1/video-js.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+    <script>
+      videojs.options.flash.swf = "https://vjs.zencdn.net/swf/video-js.swf"; // Flash fallback
+    </script>
   </head>
   <body>
-    <video id="videoPlayer" controls width="640" height="360" autoplay></video>
-    <script>
-      var url = "http://127.0.0.1:8080/dash/stream.mpd";
-      var player = dashjs.MediaPlayer().create();
-      player.initialize(document.querySelector("#videoPlayer"), url, true);
-    </script>
+    <center>
+      <video
+        id="livestream"
+        class="video-js vjs-default-skin vjs-big-play-centered"
+        controls
+        autoplay
+        preload="auto"
+        data-setup='{"techOrder" : ["flash", "html5"]}'
+      >
+        <source src="rtmp://192.168.5.64:1935/live/1234" type="video/mp4" />
+      </video>
+    </center>
   </body>
 </html>
