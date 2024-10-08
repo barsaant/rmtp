@@ -3,41 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RTMP Stream</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowplayer/7.2.7/flowplayer.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowplayer/7.2.7/flowplayer.min.js"></script>
-    <style>
-      #player {
-        width: 640px;
-        height: 360px;
-      }
-    </style>
+    <title>DASH Stream</title>
+    <script src="https://cdn.dashjs.org/latest/dash.all.min.js"></script>
   </head>
   <body>
-    <div
-      id="player"
-      data-swf="https://releases.flowplayer.org/7.2.7/flowplayer.swf"
-      data-rtmp="rtmp://<your-server-ip>/live/<stream-key>"
-    >
-      <video>
-        <source src="rtmp://192.168.5.64:1935/live/1234" type="rtmp/mp4" />
-      </video>
-    </div>
-
+    <video id="videoPlayer" controls width="640" height="360" autoplay></video>
     <script>
-      flowplayer("#player", {
-        clip: {
-          sources: [
-            {
-              type: "application/x-mpegurl",
-              src: "rtmp://<your-server-ip>/live/<stream-key>",
-            },
-          ],
-        },
-      });
+      var url = "http://127.0.0.1:8080/dash/stream.mpd";
+      var player = dashjs.MediaPlayer().create();
+      player.initialize(document.querySelector("#videoPlayer"), url, true);
     </script>
   </body>
 </html>
